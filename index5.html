@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<style>
+  body {
+    
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  h1{
+    font-size: 20px;
+    margin-right: 230px;
+    background-color: darkkhaki;
+    margin-top: -10px;
+    border-radius: 5px;
+    
+    border: 1px solid #080808;
+  }
+  .calculator {
+    
+    border-radius: 20px;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #080808;
+    background-color: #363232;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    column-fill: auto;
+    filter: grayscale();
+  }
+  .result {
+    background-color: aqua;
+    margin-left: 50px;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #080808;
+    width: 200px;
+    
+    font-weight: 200px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    box-shadow: 5px 5px 5px 10px black;
+  }
+  button {
+    filter:drop-shadow(10px 10px black);
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    color: #f4f4f4;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 5px;
+    border: none;
+    background-color: #4d4a4a;
+    cursor: pointer;
+    animation: slideup 0.3s ease-in-out;
+
+  }.clear-button {
+    background-color: rgb(117, 114, 114) !important;
+  }
+  
+  
+  @keyframes slideup {
+    0%{
+        transform: translateX(-5px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+    
+  }
+  button:hover {
+    background-color: #c9bfbf;
+  }
+</style>
+</head>
+<body>
+<div class="calculator">
+  <h1>CASIO</h1>
+  <div class="result" id="result">0</div>
+  <button onclick="clearResult()" class="clear-button">C</button>
+
+
+  <button onclick="appendToResult('7')">7</button>
+  <button onclick="appendToResult('8')">8</button>
+  <button onclick="appendToResult('9')">9</button>
+  <button onclick="appendToResult('+')">+</button>
+  <button onclick="appendToResult('4')">4</button>
+  <button onclick="appendToResult('5')">5</button>
+  <button onclick="appendToResult('6')">6</button>
+  <button onclick="appendToResult('-')">-</button>
+  <button onclick="appendToResult('1')">1</button>
+  <button onclick="appendToResult('2')">2</button>
+  <button onclick="appendToResult('3')">3</button>
+  <button onclick="appendToResult('*')">*</button>
+  <button onclick="appendToResult('0')">0</button>
+  <button onclick="calculateResult()">=</button>
+  <button onclick="appendToResult('/')">/</button>
+</div>
+<script>
+  let result = '0';
+
+  function updateResult() {
+    document.getElementById('result').textContent = result;
+  }
+
+  function clearResult() {
+    result = '0';
+    updateResult();
+  }
+
+  function appendToResult(value) {
+    if (result === '0') {
+      result = value;
+    } else {
+      result += value;
+    }
+    updateResult();
+  }
+
+  function calculateResult() {
+    try {
+      result = eval(result);
+      updateResult();
+    } catch (error) {
+      result = 'Error';
+      updateResult();
+    }
+  }
+</script>
+</body>
+</html>
